@@ -1,0 +1,69 @@
+
+=== Collection: nykaa_fixed ===
+Q1: How many days do I have to return footwear?
+    top-3 chunks from docs : ['01_return_window', '09_size_exchange', '01_return_window']
+    unique docs (deduped)  : ['01_return_window', '09_size_exchange']
+    relevant docs          : ['01_return_window', '09_size_exchange']
+    P = 2/2 = 1.000 | R = 2/2 = 1.000
+Q2: How long does a COD refund take to reach my bank account?
+    top-3 chunks from docs : ['02_cod_refund_timeline', '02_cod_refund_timeline', '08_payment_failure_retry']
+    unique docs (deduped)  : ['02_cod_refund_timeline', '08_payment_failure_retry']
+    relevant docs          : ['02_cod_refund_timeline']
+    P = 1/2 = 0.500 | R = 1/1 = 1.000
+Q3: How long does standard delivery take in metro cities?
+    top-3 chunks from docs : ['03_delivery_sla', '03_delivery_sla', '09_size_exchange']
+    unique docs (deduped)  : ['03_delivery_sla', '09_size_exchange']
+    relevant docs          : ['03_delivery_sla']
+    P = 1/2 = 0.500 | R = 1/1 = 1.000
+Q4: Can I cancel my order after it has been shipped?
+    top-3 chunks from docs : ['06_order_cancellation', '06_order_cancellation', '08_payment_failure_retry']
+    unique docs (deduped)  : ['06_order_cancellation', '08_payment_failure_retry']
+    relevant docs          : ['06_order_cancellation']
+    P = 1/2 = 0.500 | R = 1/1 = 1.000
+Q5: What is the warranty on electronics like hair dryers?
+    top-3 chunks from docs : ['05_warranty_terms', '05_warranty_terms', '01_return_window']
+    unique docs (deduped)  : ['05_warranty_terms', '01_return_window']
+    relevant docs          : ['05_warranty_terms']
+    P = 1/2 = 0.500 | R = 1/1 = 1.000
+Q6: How do I raise a claim for a damaged item?
+    top-3 chunks from docs : ['10_damaged_item_claim', '10_damaged_item_claim', '10_damaged_item_claim']
+    unique docs (deduped)  : ['10_damaged_item_claim']
+    relevant docs          : ['10_damaged_item_claim']
+    P = 1/1 = 1.000 | R = 1/1 = 1.000
+MEAN Precision@3 = 0.667 | MEAN Recall@3 = 1.0
+
+=== Collection: nykaa_sentence ===
+Q1: How many days do I have to return footwear?
+    top-3 chunks from docs : ['01_return_window', '09_size_exchange', '01_return_window']
+    unique docs (deduped)  : ['01_return_window', '09_size_exchange']
+    relevant docs          : ['01_return_window', '09_size_exchange']
+    P = 2/2 = 1.000 | R = 2/2 = 1.000
+Q2: How long does a COD refund take to reach my bank account?
+    top-3 chunks from docs : ['02_cod_refund_timeline', '08_payment_failure_retry', '08_payment_failure_retry']
+    unique docs (deduped)  : ['02_cod_refund_timeline', '08_payment_failure_retry']
+    relevant docs          : ['02_cod_refund_timeline']
+    P = 1/2 = 0.500 | R = 1/1 = 1.000
+Q3: How long does standard delivery take in metro cities?
+    top-3 chunks from docs : ['03_delivery_sla', '03_delivery_sla', '09_size_exchange']
+    unique docs (deduped)  : ['03_delivery_sla', '09_size_exchange']
+    relevant docs          : ['03_delivery_sla']
+    P = 1/2 = 0.500 | R = 1/1 = 1.000
+Q4: Can I cancel my order after it has been shipped?
+    top-3 chunks from docs : ['06_order_cancellation', '06_order_cancellation', '06_order_cancellation']
+    unique docs (deduped)  : ['06_order_cancellation']
+    relevant docs          : ['06_order_cancellation']
+    P = 1/1 = 1.000 | R = 1/1 = 1.000
+Q5: What is the warranty on electronics like hair dryers?
+    top-3 chunks from docs : ['05_warranty_terms', '05_warranty_terms', '05_warranty_terms']
+    unique docs (deduped)  : ['05_warranty_terms']
+    relevant docs          : ['05_warranty_terms']
+    P = 1/1 = 1.000 | R = 1/1 = 1.000
+Q6: How do I raise a claim for a damaged item?
+    top-3 chunks from docs : ['10_damaged_item_claim', '10_damaged_item_claim', '05_warranty_terms']
+    unique docs (deduped)  : ['10_damaged_item_claim', '05_warranty_terms']
+    relevant docs          : ['10_damaged_item_claim']
+    P = 1/2 = 0.500 | R = 1/1 = 1.000
+MEAN Precision@3 = 0.75 | MEAN Recall@3 = 1.0
+
+RECOMMENDATION:
+I would deploy sentence-based chunking. On the same 6 queries it scored mean Precision@3 = 0.75 and mean Recall@3 = 1.0, versus 0.667 and 1.0 for fixed-size-with-overlap chunking. Sentence chunks keep each policy rule complete in one piece, so the retrieved text is cleaner to answer from.

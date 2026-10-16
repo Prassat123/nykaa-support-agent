@@ -1,0 +1,159 @@
+{
+  "rows": [
+    {
+      "id": 1,
+      "topic": "return window by category",
+      "query": "Within how many days can I return a sealed lipstick or Electronics item?",
+      "answer": "According to Nykaa policy: Opened Beauty products cannot be returned for hygiene reasons, but sealed Beauty items can be returned within 7 days. Home products have a 10 day return window, and Electronics have a 7 day return window.",
+      "fallback": false,
+      "context_relevance": 0.543,
+      "groundedness": 1.0,
+      "answer_relevance": 0.68
+    },
+    {
+      "id": 2,
+      "topic": "COD refund timelines",
+      "query": "I paid cash on delivery, how will I get my refund and how long does it take?",
+      "answer": "According to Nykaa policy: For Cash on Delivery orders, refunds are not returned as cash. Bank account refunds for COD orders take 5 to 7 business days after the returned item passes quality check.",
+      "fallback": false,
+      "context_relevance": 0.624,
+      "groundedness": 1.0,
+      "answer_relevance": 0.64
+    },
+    {
+      "id": 3,
+      "topic": "delivery SLAs",
+      "query": "How many business days does delivery take to a non-metro pin code?",
+      "answer": "According to Nykaa policy: Non-metro and remote pin codes can take 5 to 8 business days. Standard delivery within metro cities is completed within 2 to 4 business days.",
+      "fallback": false,
+      "context_relevance": 0.65,
+      "groundedness": 1.0,
+      "answer_relevance": 0.716
+    },
+    {
+      "id": 4,
+      "topic": "reverse-pickup eligibility",
+      "query": "What happens if reverse pickup is not available at my pin code?",
+      "answer": "According to Nykaa policy: Reverse pickup is available only for pin codes that are serviceable by the courier partner. Reverse pickup means a Nykaa courier partner collects the return from the customer address.",
+      "fallback": false,
+      "context_relevance": 0.597,
+      "groundedness": 1.0,
+      "answer_relevance": 0.694
+    },
+    {
+      "id": 5,
+      "topic": "warranty terms by category",
+      "query": "Do apparel or beauty products come with a warranty?",
+      "answer": "According to Nykaa policy: Home appliances carry a 6 month warranty, while Apparel, Footwear and Beauty products do not carry any warranty. Electronics such as hair dryers and trimmers carry a 1 year manufacturer warranty from the date of delivery.",
+      "fallback": false,
+      "context_relevance": 0.574,
+      "groundedness": 1.0,
+      "answer_relevance": 0.649
+    },
+    {
+      "id": 6,
+      "topic": "order-cancellation policy",
+      "query": "Can I cancel an order while its status is Placed?",
+      "answer": "According to Nykaa policy: An order can be cancelled free of charge while its status is Placed. Nykaa may cancel an order if the item goes out of stock, and the customer is informed by SMS and email.",
+      "fallback": false,
+      "context_relevance": 0.697,
+      "groundedness": 1.0,
+      "answer_relevance": 0.662
+    },
+    {
+      "id": 7,
+      "topic": "loyalty-points redemption",
+      "query": "How much is one loyalty point worth and when do points expire?",
+      "answer": "According to Nykaa policy: Loyalty points expire 12 months after they are earned and are reversed if the order is returned. Each loyalty point is worth INR 1 when redeemed at checkout.",
+      "fallback": false,
+      "context_relevance": 0.683,
+      "groundedness": 1.0,
+      "answer_relevance": 0.731
+    },
+    {
+      "id": 8,
+      "topic": "payment failure / retry",
+      "query": "My payment failed but money was debited, when will I get it back?",
+      "answer": "According to Nykaa policy: If a payment fails but money is debited, the amount is automatically refunded to the source account within 5 to 7 business days. The customer can retry payment from the order page within 30 minutes before the order is auto-cancelled.",
+      "fallback": false,
+      "context_relevance": 0.582,
+      "groundedness": 1.0,
+      "answer_relevance": 0.583
+    },
+    {
+      "id": 9,
+      "topic": "size-exchange policy",
+      "query": "Can I exchange my shoes for a different size?",
+      "answer": "According to Nykaa policy: Size exchange is available for Apparel and Footwear within 15 days of delivery. The exchange is allowed only once per order item and only if the new size is in stock.",
+      "fallback": false,
+      "context_relevance": 0.539,
+      "groundedness": 1.0,
+      "answer_relevance": 0.602
+    },
+    {
+      "id": 10,
+      "topic": "damaged-item claim process",
+      "query": "My item arrived broken, how many hours do I have to raise a claim?",
+      "answer": "According to Nykaa policy: If an item arrives damaged, defective or wrong, the customer must raise a claim within 48 hours of delivery. Claims raised after 48 hours are reviewed case by case and may be rejected.",
+      "fallback": false,
+      "context_relevance": 0.568,
+      "groundedness": 1.0,
+      "answer_relevance": 0.644
+    },
+    {
+      "id": 11,
+      "topic": "international shipping restrictions",
+      "query": "Can I ship perfume internationally to the UK?",
+      "answer": "According to Nykaa policy: Liquid perfumes, aerosols, nail polish removers and lithium battery electronics cannot be shipped internationally due to carrier restrictions. Nykaa currently ships internationally only to a limited list of countries including the UAE, the United Kingdom and the United States.",
+      "fallback": false,
+      "context_relevance": 0.53,
+      "groundedness": 1.0,
+      "answer_relevance": 0.694
+    },
+    {
+      "id": 12,
+      "topic": "support escalation matrix",
+      "query": "When is my complaint escalated to the grievance officer?",
+      "answer": "According to Nykaa policy: Issues unresolved for 72 hours, or orders worth more than INR 10000 with a delayed shipment, are escalated to the Level 3 grievance officer. The grievance officer must provide a final resolution within 7 days.",
+      "fallback": false,
+      "context_relevance": 0.566,
+      "groundedness": 1.0,
+      "answer_relevance": 0.541
+    },
+    {
+      "id": 13,
+      "topic": "OUT-OF-SCOPE",
+      "query": "What is the best laptop for gaming in 2026?",
+      "answer": "I don't know. I could not find this in Nykaa's policy documents, so I will not guess. Please contact Nykaa support for help.",
+      "fallback": true,
+      "context_relevance": 0.166,
+      "groundedness": 1.0,
+      "answer_relevance": 0.059
+    },
+    {
+      "id": 14,
+      "topic": "OUT-OF-SCOPE",
+      "query": "Tell me a joke about cats.",
+      "answer": "I don't know. I could not find this in Nykaa's policy documents, so I will not guess. Please contact Nykaa support for help.",
+      "fallback": true,
+      "context_relevance": 0.103,
+      "groundedness": 1.0,
+      "answer_relevance": 0.077
+    },
+    {
+      "id": 15,
+      "topic": "EDGE CASE (vague)",
+      "query": "help",
+      "answer": "I don't know. I could not find this in Nykaa's policy documents, so I will not guess. Please contact Nykaa support for help.",
+      "fallback": true,
+      "context_relevance": 0.18,
+      "groundedness": 1.0,
+      "answer_relevance": 0.039
+    }
+  ],
+  "averages": {
+    "context_relevance": 0.507,
+    "groundedness": 1.0,
+    "answer_relevance": 0.534
+  }
+}

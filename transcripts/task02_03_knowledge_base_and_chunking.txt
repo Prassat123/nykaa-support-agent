@@ -1,0 +1,37 @@
+Task 2 - knowledge base: 12 documents in knowledge_base/
+  01_return_window                   4 sentences, 370 chars
+  02_cod_refund_timeline             4 sentences, 317 chars
+  03_delivery_sla                    4 sentences, 344 chars
+  04_reverse_pickup_eligibility      4 sentences, 389 chars
+  05_warranty_terms                  4 sentences, 376 chars
+  06_order_cancellation              4 sentences, 388 chars
+  07_loyalty_points_redemption       4 sentences, 365 chars
+  08_payment_failure_retry           4 sentences, 451 chars
+  09_size_exchange                   4 sentences, 355 chars
+  10_damaged_item_claim              4 sentences, 376 chars
+  11_international_shipping          4 sentences, 399 chars
+  12_support_escalation_matrix       4 sentences, 379 chars
+
+Task 3 - fixed-size chunking: size=200 chars, overlap=50 chars | sentence chunking: 1 sentence per chunk
+
+Example - '01_return_window' fixed-size chunks:
+   [Nykaa accepts returns within a fixed window that depends on the product category. Apparel and Footwear can be returned within 15 days of delivery if tags are intact. Home products have a 10 day return]
+   [ags are intact. Home products have a 10 day return window, and Electronics have a 7 day return window. Opened Beauty products cannot be returned for hygiene reasons, but sealed Beauty items can be ret]
+   [ygiene reasons, but sealed Beauty items can be returned within 7 days.]
+Example - '01_return_window' sentence chunks:
+   [Nykaa accepts returns within a fixed window that depends on the product category.]
+   [Apparel and Footwear can be returned within 15 days of delivery if tags are intact.]
+   [Home products have a 10 day return window, and Electronics have a 7 day return window.]
+   [Opened Beauty products cannot be returned for hygiene reasons, but sealed Beauty items can be returned within 7 days.]
+
+Embedded with SentenceTransformers 'all-MiniLM-L6-v2' and indexed in 2 separate ChromaDB collections: {'nykaa_fixed': 34, 'nykaa_sentence': 48}
+
+Sample query on 'nykaa_fixed': Can I return a pair of shoes after two weeks?
+   sim=0.5172  09_size_exchange               | Size exchange is available for Apparel and Footwear within 15 days of delivery. The exchan
+   sim=0.4938  01_return_window               | Nykaa accepts returns within a fixed window that depends on the product category. Apparel 
+   sim=0.4101  01_return_window               | ygiene reasons, but sealed Beauty items can be returned within 7 days.
+
+Sample query on 'nykaa_sentence': Can I return a pair of shoes after two weeks?
+   sim=0.5945  01_return_window               | Apparel and Footwear can be returned within 15 days of delivery if tags are intact.
+   sim=0.5056  09_size_exchange               | Size exchange is available for Apparel and Footwear within 15 days of delivery.
+   sim=0.4231  01_return_window               | Opened Beauty products cannot be returned for hygiene reasons, but sealed Beauty items can

@@ -27,6 +27,8 @@ STATUS_WEIGHTS = {
 }
 
 # Har category ki realistic price range (₹)
+# Price reasoning: ranges follow typical Nykaa prices - beauty items from a INR 199 lipstick to a
+# INR 3999 premium serum, while electronics (hair dryers, trimmers, straighteners) go up to INR 24999.
 PRICE_RANGE_INR = {
     "Beauty": (199, 3999),
     "Apparel": (499, 4999),
@@ -89,4 +91,3 @@ if __name__ == "__main__":
     print(f"\nDelayed shipments: {delayed_pct:.1f}%")
     print("\nAll checks passed!")
     print("\nSample order:", ORDERS[0])
-    

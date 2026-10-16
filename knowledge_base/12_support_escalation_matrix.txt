@@ -1,0 +1,1 @@
+Level 1 support is the chat agent, who must respond within 2 hours. If the issue is not resolved within 24 hours, it is escalated to a Level 2 senior support specialist. Issues unresolved for 72 hours, or orders worth more than INR 10000 with a delayed shipment, are escalated to the Level 3 grievance officer. The grievance officer must provide a final resolution within 7 days.

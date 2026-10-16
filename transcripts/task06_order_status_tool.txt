@@ -1,0 +1,9 @@
+Formula: score = 0.6 * delayed_shipment + 0.4 * (days_since_created / 30)
+Median days_since_created in our data = 13.0
+Threshold = 0.6 + 0.4 * 13.0/30 = 0.7733
+Orders above threshold: 6/50 -> ['NYK-1002', 'NYK-1008', 'NYK-1010', 'NYK-1022', 'NYK-1029', 'NYK-1043']
+
+NYK-1010 -> {'found': True, 'record_id': 'NYK-1010', 'category': 'Electronics', 'status': 'Shipped', 'order_value_inr': 7299, 'delayed_shipment': True, 'days_since_created': 22, 'escalation_score': 0.8933, 'escalation_threshold': 0.7733, 'escalate': True}
+NYK-1004 -> {'found': True, 'record_id': 'NYK-1004', 'category': 'Apparel', 'status': 'Shipped', 'order_value_inr': 4963, 'delayed_shipment': False, 'days_since_created': 13, 'escalation_score': 0.1733, 'escalation_threshold': 0.7733, 'escalate': False}
+NYK-1026 -> {'found': True, 'record_id': 'NYK-1026', 'category': 'Home', 'status': 'Shipped', 'order_value_inr': 2703, 'delayed_shipment': True, 'days_since_created': 13, 'escalation_score': 0.7733, 'escalation_threshold': 0.7733, 'escalate': False}
+NYK-9999 -> {'found': False, 'record_id': 'NYK-9999', 'message': 'No order found with ID NYK-9999.'}

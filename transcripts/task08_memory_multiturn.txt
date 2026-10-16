@@ -1,0 +1,41 @@
+Multi-turn conversation, session_id = customer-A (memory file: memory/sessions.json)
+
+USER: Hi, can you check order NYK-1010 for me?
+   memory.last_order_id before this turn = None
+   route          : "order_lookup"
+   answer         : "Order NYK-1010 (Electronics) is currently Shipped. Order value: INR 7299. Delayed shipment: Yes. Escalation score: 0.8933 (threshold 0.7733). This order needs escalation to Level 2 support."
+   order          : {"record_id": "NYK-1010", "status": "Shipped", "order_value_inr": 7299, "escalation_score": 0.8933, "escalate": true}
+
+USER: Is it delayed?
+   memory.last_order_id before this turn = NYK-1010
+   route          : "order_lookup"
+   answer         : "(From our conversation, you mean order NYK-1010.) Order NYK-1010 (Electronics) is currently Shipped. Order value: INR 7299. Delayed shipment: Yes. Escalation score: 0.8933 (threshold 0.7733). This order needs escalation to Level 2 support."
+   order          : {"record_id": "NYK-1010", "status": "Shipped", "order_value_inr": 7299, "escalation_score": 0.8933, "escalate": true}
+
+USER: Does that order need escalation?
+   memory.last_order_id before this turn = NYK-1010
+   route          : "order_lookup"
+   answer         : "(From our conversation, you mean order NYK-1010.) Order NYK-1010 (Electronics) is currently Shipped. Order value: INR 7299. Delayed shipment: Yes. Escalation score: 0.8933 (threshold 0.7733). This order needs escalation to Level 2 support."
+   order          : {"record_id": "NYK-1010", "status": "Shipped", "order_value_inr": 7299, "escalation_score": 0.8933, "escalate": true}
+
+Saved memory for this session:
+{
+  "turns": [
+    {
+      "user": "Hi, can you check order NYK-1010 for me?",
+      "assistant": "Order NYK-1010 (Electronics) is currently Shipped. Order value: INR 7299. Delayed shipment: Yes. Escalation score: 0.8933 (threshold 0.7733). This order needs escalation to Level 2 support.",
+      "route": "order_lookup"
+    },
+    {
+      "user": "Is it delayed?",
+      "assistant": "(From our conversation, you mean order NYK-1010.) Order NYK-1010 (Electronics) is currently Shipped. Order value: INR 7299. Delayed shipment: Yes. Escalation score: 0.8933 (threshold 0.7733). This order needs escalation to Level 2 support.",
+      "route": "order_lookup"
+    },
+    {
+      "user": "Does that order need escalation?",
+      "assistant": "(From our conversation, you mean order NYK-1010.) Order NYK-1010 (Electronics) is currently Shipped. Order value: INR 7299. Delayed shipment: Yes. Escalation score: 0.8933 (threshold 0.7733). This order needs escalation to Level 2 support.",
+      "route": "order_lookup"
+    }
+  ],
+  "last_order_id": "NYK-1010"
+}

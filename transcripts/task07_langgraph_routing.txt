@@ -1,0 +1,50 @@
+LangGraph structure (Mermaid text):
+
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	input_guard(input_guard)
+	classify_intent(classify_intent)
+	retrieve_policy(retrieve_policy)
+	lookup_order(lookup_order)
+	generate_answer(generate_answer)
+	output_guard(output_guard)
+	finalize(finalize)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> input_guard;
+	classify_intent -.-> generate_answer;
+	classify_intent -.-> lookup_order;
+	classify_intent -.-> retrieve_policy;
+	generate_answer --> output_guard;
+	input_guard --> classify_intent;
+	lookup_order --> generate_answer;
+	output_guard --> finalize;
+	retrieve_policy --> generate_answer;
+	finalize --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc
+
+Nodes (7): ['input_guard', 'classify_intent', 'retrieve_policy', 'lookup_order', 'generate_answer', 'output_guard', 'finalize']
+Conditional edge: classify_intent -> route_after_classify() -> retrieve_policy | lookup_order | generate_answer
+
+USER: What is the return window for Electronics?
+   route          : "rag"
+   answer         : "According to Nykaa policy: Home products have a 10 day return window, and Electronics have a 7 day return window."
+   sources        : ["01_return_window"]
+   order          : null
+   guardrails     : {"pii_masked": [], "injection_detected": false, "grounded": true, "note": "all sentences supported by retrieved context"}
+   nodes_executed : ["input_guard", "classify_intent", "retrieve_policy", "generate_answer", "output_guard", "finalize"]
+
+USER: What is the status of order NYK-1010?
+   route          : "order_lookup"
+   answer         : "Order NYK-1010 (Electronics) is currently Shipped. Order value: INR 7299. Delayed shipment: Yes. Escalation score: 0.8933 (threshold 0.7733). This order needs escalation to Level 2 support."
+   sources        : ["orders_dataset"]
+   order          : {"record_id": "NYK-1010", "status": "Shipped", "order_value_inr": 7299, "escalation_score": 0.8933, "escalate": true}
+   guardrails     : {"pii_masked": [], "injection_detected": false, "grounded": true, "note": "answer built from tool data / fixed template"}
+   nodes_executed : ["input_guard", "classify_intent", "lookup_order", "generate_answer", "output_guard", "finalize"]
+

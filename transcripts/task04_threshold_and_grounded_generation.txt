@@ -1,0 +1,44 @@
+Collection used (winner of Task 5): nykaa_sentence
+
+Step 1 - measure top-1 cosine similarity
+  IN-SCOPE   0.7029  How many days do I have to return footwear?
+  IN-SCOPE   0.8421  How long does a COD refund take to reach my bank account?
+  IN-SCOPE   0.9264  How long does standard delivery take in metro cities?
+  IN-SCOPE   0.7794  Can I cancel my order after it has been shipped?
+  IN-SCOPE   0.8011  What is the warranty on electronics like hair dryers?
+  IN-SCOPE   0.6799  How do I raise a claim for a damaged item?
+  OUT-SCOPE  0.0935  What is the capital of France?
+  OUT-SCOPE  0.0909  Can you give me a recipe for butter chicken?
+  OUT-SCOPE  0.1305  Who won the cricket world cup in 2011?
+
+Step 2 - chosen threshold = 0.4052  (midpoint of the gap: (min in-scope 0.6799 + max out-of-scope 0.1305) / 2)
+
+Step 3 - grounded generation demo (answers use ONLY retrieved chunks)
+
+Q: How many days do I have to return footwear?
+   top-1 similarity = 0.7029 | threshold = 0.4052 | fallback = False | sources = ['01_return_window', '09_size_exchange']
+   A: According to Nykaa policy: Apparel and Footwear can be returned within 15 days of delivery if tags are intact. Opened Beauty products cannot be returned for hygiene reasons, but sealed Beauty items can be returned within 7 days.
+
+Q: How long does a COD refund take to reach my bank account?
+   top-1 similarity = 0.8421 | threshold = 0.4052 | fallback = False | sources = ['02_cod_refund_timeline', '08_payment_failure_retry']
+   A: According to Nykaa policy: Bank account refunds for COD orders take 5 to 7 business days after the returned item passes quality check.
+
+Q: How long does standard delivery take in metro cities?
+   top-1 similarity = 0.9264 | threshold = 0.4052 | fallback = False | sources = ['03_delivery_sla', '09_size_exchange']
+   A: According to Nykaa policy: Standard delivery within metro cities is completed within 2 to 4 business days. Express delivery is available in selected cities and delivers within 1 business day for an extra charge of INR 99.
+
+Q: Can I cancel my order after it has been shipped?
+   top-1 similarity = 0.7794 | threshold = 0.4052 | fallback = False | sources = ['06_order_cancellation']
+   A: According to Nykaa policy: Once an order is Shipped, it cannot be cancelled, but the customer may refuse delivery or raise a return after delivery. Nykaa may cancel an order if the item goes out of stock, and the customer is informed by SMS and email.
+
+Q: What is the warranty on electronics like hair dryers?
+   top-1 similarity = 0.8011 | threshold = 0.4052 | fallback = False | sources = ['05_warranty_terms']
+   A: According to Nykaa policy: Electronics such as hair dryers and trimmers carry a 1 year manufacturer warranty from the date of delivery. Home appliances carry a 6 month warranty, while Apparel, Footwear and Beauty products do not carry any warranty.
+
+Q: How do I raise a claim for a damaged item?
+   top-1 similarity = 0.6799 | threshold = 0.4052 | fallback = False | sources = ['10_damaged_item_claim']
+   A: According to Nykaa policy: If an item arrives damaged, defective or wrong, the customer must raise a claim within 48 hours of delivery.
+
+Q: What is the capital of France?
+   top-1 similarity = 0.0935 | threshold = 0.4052 | fallback = True | sources = []
+   A: I don't know. I could not find this in Nykaa's policy documents, so I will not guess. Please contact Nykaa support for help.

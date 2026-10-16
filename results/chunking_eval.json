@@ -1,0 +1,247 @@
+{
+  "recommended_collection": "nykaa_sentence",
+  "recommendation": "I would deploy sentence-based chunking. On the same 6 queries it scored mean Precision@3 = 0.75 and mean Recall@3 = 1.0, versus 0.667 and 1.0 for fixed-size-with-overlap chunking. Sentence chunks keep each policy rule complete in one piece, so the retrieved text is cleaner to answer from.",
+  "results": {
+    "nykaa_fixed": {
+      "collection": "nykaa_fixed",
+      "rows": [
+        {
+          "query": "How many days do I have to return footwear?",
+          "top3_chunk_docs": [
+            "01_return_window",
+            "09_size_exchange",
+            "01_return_window"
+          ],
+          "unique_docs": [
+            "01_return_window",
+            "09_size_exchange"
+          ],
+          "relevant": [
+            "01_return_window",
+            "09_size_exchange"
+          ],
+          "hits": 2,
+          "precision@3": 1.0,
+          "recall@3": 1.0,
+          "arithmetic": "P = 2/2 = 1.000 | R = 2/2 = 1.000"
+        },
+        {
+          "query": "How long does a COD refund take to reach my bank account?",
+          "top3_chunk_docs": [
+            "02_cod_refund_timeline",
+            "02_cod_refund_timeline",
+            "08_payment_failure_retry"
+          ],
+          "unique_docs": [
+            "02_cod_refund_timeline",
+            "08_payment_failure_retry"
+          ],
+          "relevant": [
+            "02_cod_refund_timeline"
+          ],
+          "hits": 1,
+          "precision@3": 0.5,
+          "recall@3": 1.0,
+          "arithmetic": "P = 1/2 = 0.500 | R = 1/1 = 1.000"
+        },
+        {
+          "query": "How long does standard delivery take in metro cities?",
+          "top3_chunk_docs": [
+            "03_delivery_sla",
+            "03_delivery_sla",
+            "09_size_exchange"
+          ],
+          "unique_docs": [
+            "03_delivery_sla",
+            "09_size_exchange"
+          ],
+          "relevant": [
+            "03_delivery_sla"
+          ],
+          "hits": 1,
+          "precision@3": 0.5,
+          "recall@3": 1.0,
+          "arithmetic": "P = 1/2 = 0.500 | R = 1/1 = 1.000"
+        },
+        {
+          "query": "Can I cancel my order after it has been shipped?",
+          "top3_chunk_docs": [
+            "06_order_cancellation",
+            "06_order_cancellation",
+            "08_payment_failure_retry"
+          ],
+          "unique_docs": [
+            "06_order_cancellation",
+            "08_payment_failure_retry"
+          ],
+          "relevant": [
+            "06_order_cancellation"
+          ],
+          "hits": 1,
+          "precision@3": 0.5,
+          "recall@3": 1.0,
+          "arithmetic": "P = 1/2 = 0.500 | R = 1/1 = 1.000"
+        },
+        {
+          "query": "What is the warranty on electronics like hair dryers?",
+          "top3_chunk_docs": [
+            "05_warranty_terms",
+            "05_warranty_terms",
+            "01_return_window"
+          ],
+          "unique_docs": [
+            "05_warranty_terms",
+            "01_return_window"
+          ],
+          "relevant": [
+            "05_warranty_terms"
+          ],
+          "hits": 1,
+          "precision@3": 0.5,
+          "recall@3": 1.0,
+          "arithmetic": "P = 1/2 = 0.500 | R = 1/1 = 1.000"
+        },
+        {
+          "query": "How do I raise a claim for a damaged item?",
+          "top3_chunk_docs": [
+            "10_damaged_item_claim",
+            "10_damaged_item_claim",
+            "10_damaged_item_claim"
+          ],
+          "unique_docs": [
+            "10_damaged_item_claim"
+          ],
+          "relevant": [
+            "10_damaged_item_claim"
+          ],
+          "hits": 1,
+          "precision@3": 1.0,
+          "recall@3": 1.0,
+          "arithmetic": "P = 1/1 = 1.000 | R = 1/1 = 1.000"
+        }
+      ],
+      "mean_precision@3": 0.667,
+      "mean_recall@3": 1.0
+    },
+    "nykaa_sentence": {
+      "collection": "nykaa_sentence",
+      "rows": [
+        {
+          "query": "How many days do I have to return footwear?",
+          "top3_chunk_docs": [
+            "01_return_window",
+            "09_size_exchange",
+            "01_return_window"
+          ],
+          "unique_docs": [
+            "01_return_window",
+            "09_size_exchange"
+          ],
+          "relevant": [
+            "01_return_window",
+            "09_size_exchange"
+          ],
+          "hits": 2,
+          "precision@3": 1.0,
+          "recall@3": 1.0,
+          "arithmetic": "P = 2/2 = 1.000 | R = 2/2 = 1.000"
+        },
+        {
+          "query": "How long does a COD refund take to reach my bank account?",
+          "top3_chunk_docs": [
+            "02_cod_refund_timeline",
+            "08_payment_failure_retry",
+            "08_payment_failure_retry"
+          ],
+          "unique_docs": [
+            "02_cod_refund_timeline",
+            "08_payment_failure_retry"
+          ],
+          "relevant": [
+            "02_cod_refund_timeline"
+          ],
+          "hits": 1,
+          "precision@3": 0.5,
+          "recall@3": 1.0,
+          "arithmetic": "P = 1/2 = 0.500 | R = 1/1 = 1.000"
+        },
+        {
+          "query": "How long does standard delivery take in metro cities?",
+          "top3_chunk_docs": [
+            "03_delivery_sla",
+            "03_delivery_sla",
+            "09_size_exchange"
+          ],
+          "unique_docs": [
+            "03_delivery_sla",
+            "09_size_exchange"
+          ],
+          "relevant": [
+            "03_delivery_sla"
+          ],
+          "hits": 1,
+          "precision@3": 0.5,
+          "recall@3": 1.0,
+          "arithmetic": "P = 1/2 = 0.500 | R = 1/1 = 1.000"
+        },
+        {
+          "query": "Can I cancel my order after it has been shipped?",
+          "top3_chunk_docs": [
+            "06_order_cancellation",
+            "06_order_cancellation",
+            "06_order_cancellation"
+          ],
+          "unique_docs": [
+            "06_order_cancellation"
+          ],
+          "relevant": [
+            "06_order_cancellation"
+          ],
+          "hits": 1,
+          "precision@3": 1.0,
+          "recall@3": 1.0,
+          "arithmetic": "P = 1/1 = 1.000 | R = 1/1 = 1.000"
+        },
+        {
+          "query": "What is the warranty on electronics like hair dryers?",
+          "top3_chunk_docs": [
+            "05_warranty_terms",
+            "05_warranty_terms",
+            "05_warranty_terms"
+          ],
+          "unique_docs": [
+            "05_warranty_terms"
+          ],
+          "relevant": [
+            "05_warranty_terms"
+          ],
+          "hits": 1,
+          "precision@3": 1.0,
+          "recall@3": 1.0,
+          "arithmetic": "P = 1/1 = 1.000 | R = 1/1 = 1.000"
+        },
+        {
+          "query": "How do I raise a claim for a damaged item?",
+          "top3_chunk_docs": [
+            "10_damaged_item_claim",
+            "10_damaged_item_claim",
+            "05_warranty_terms"
+          ],
+          "unique_docs": [
+            "10_damaged_item_claim",
+            "05_warranty_terms"
+          ],
+          "relevant": [
+            "10_damaged_item_claim"
+          ],
+          "hits": 1,
+          "precision@3": 0.5,
+          "recall@3": 1.0,
+          "arithmetic": "P = 1/2 = 0.500 | R = 1/1 = 1.000"
+        }
+      ],
+      "mean_precision@3": 0.75,
+      "mean_recall@3": 1.0
+    }
+  }
+}

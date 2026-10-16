@@ -218,3 +218,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ---- project generated files ----
+chroma_db/
+checkpoints.sqlite
+checkpoints.sqlite-*
+__pycache__/

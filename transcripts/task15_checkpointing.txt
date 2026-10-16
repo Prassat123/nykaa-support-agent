@@ -1,0 +1,35 @@
+PHASE 1 (process A) - thread_id = checkpoint-demo-thread-1
+Query: How long does a COD refund take to reach my bank account?
+Graph is configured to STOP before 'generate_answer' (simulated interruption).
+
+    [EXECUTING NODE] input_guard
+    [EXECUTING NODE] classify_intent
+    [EXECUTING NODE] retrieve_policy
+
+Run stopped. Nodes executed in this process: ['input_guard', 'classify_intent', 'retrieve_policy']
+Checkpoint saved to checkpoints.sqlite
+  saved nodes_executed = ['input_guard', 'classify_intent', 'retrieve_policy']
+  saved route          = rag
+  saved chunks         = ['02_cod_refund_timeline', '08_payment_failure_retry', '08_payment_failure_retry']
+  next node to run     = ('generate_answer',)
+Process A now exits without finishing the run.
+
+
+PHASE 2 (NEW process B) - resuming the SAME thread_id = checkpoint-demo-thread-1
+State LOADED from checkpoints.sqlite (nothing recomputed):
+  nodes already completed = ['input_guard', 'classify_intent', 'retrieve_policy']
+  route (from checkpoint) = rag
+  chunks (from checkpoint)= ['02_cod_refund_timeline', '08_payment_failure_retry', '08_payment_failure_retry']
+  pending next node       = ('generate_answer',)
+
+Resuming with graph.ainvoke(None, same config):
+    [EXECUTING NODE] generate_answer
+    [EXECUTING NODE] output_guard
+    [EXECUTING NODE] finalize
+
+Nodes executed in process B : ['generate_answer', 'output_guard', 'finalize']
+Already-completed nodes re-executed in process B: NONE
+Full node history of the run: ['input_guard', 'classify_intent', 'retrieve_policy', 'generate_answer', 'output_guard', 'finalize']
+
+Final answer: According to Nykaa policy: Bank account refunds for COD orders take 5 to 7 business days after the returned item passes quality check.
+CHECK PASSED: run resumed from the checkpoint and finished without repeating nodes.

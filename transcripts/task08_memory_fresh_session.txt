@@ -1,0 +1,9 @@
+FRESH conversation, session_id = customer-B-fresh
+
+memory before first turn = {"turns": [], "last_order_id": null}
+USER: Is it delayed?
+   route          : "clarify"
+   answer         : "Please share your order ID (for example NYK-1001) so I can check it."
+   order          : null
+
+Result: no order is remembered for this new session, so the agent asks for the order ID instead of reusing customer-A's order. State correctly absent.

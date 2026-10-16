@@ -1,0 +1,18 @@
+{
+  "collection": "nykaa_sentence",
+  "threshold": 0.4052,
+  "rule": "midpoint of the gap: (min in-scope 0.6799 + max out-of-scope 0.1305) / 2",
+  "in_scope_top1": {
+    "How many days do I have to return footwear?": 0.7029,
+    "How long does a COD refund take to reach my bank account?": 0.8421,
+    "How long does standard delivery take in metro cities?": 0.9264,
+    "Can I cancel my order after it has been shipped?": 0.7794,
+    "What is the warranty on electronics like hair dryers?": 0.8011,
+    "How do I raise a claim for a damaged item?": 0.6799
+  },
+  "out_of_scope_top1": {
+    "What is the capital of France?": 0.0935,
+    "Can you give me a recipe for butter chicken?": 0.0909,
+    "Who won the cricket world cup in 2011?": 0.1305
+  }
+}

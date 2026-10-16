@@ -1,0 +1,123 @@
+GET /health -> {'status': 'ok', 'mock_llm': True, 'collection': 'nykaa_sentence'} 
+
+POST /ask  body={"query": "Can I exchange my shoes for a bigger size?", "session_id": "api-demo"}
+  status=200
+  response={
+  "trace_id": "ee7ca535-2e9d-4758-b686-d605306940eb",
+  "session_id": "api-demo",
+  "query": "Can I exchange my shoes for a bigger size?",
+  "route": "rag",
+  "answer": "According to Nykaa policy: Size exchange is available for Apparel and Footwear within 15 days of delivery. The exchange is allowed only once per order item and only if the new size is in stock.",
+  "sources": [
+    "09_size_exchange"
+  ],
+  "order": null,
+  "guardrails": {
+    "pii_masked": [],
+    "injection_detected": false,
+    "grounded": true,
+    "note": "all sentences supported by retrieved context"
+  },
+  "nodes_executed": [
+    "input_guard",
+    "classify_intent",
+    "retrieve_policy",
+    "generate_answer",
+    "output_guard",
+    "finalize"
+  ],
+  "latency_ms": 10.53
+}
+
+POST /ask  body={"query": "My number is 9876543210, card ending 4321. Status of NYK-1029?", "session_id": "api-demo"}
+  status=200
+  response={
+  "trace_id": "bd2ae88b-64ce-4ac7-a7ce-4a52a2b0974b",
+  "session_id": "api-demo",
+  "query": "My number is [PHONE_MASKED], card ending [CARD_LAST4_MASKED]. Status of NYK-1029?",
+  "route": "order_lookup",
+  "answer": "Order NYK-1029 (Footwear) is currently Shipped. Order value: INR 3862. Delayed shipment: Yes. Escalation score: 0.92 (threshold 0.7733). This order needs escalation to Level 2 support.",
+  "sources": [
+    "orders_dataset"
+  ],
+  "order": {
+    "record_id": "NYK-1029",
+    "status": "Shipped",
+    "order_value_inr": 3862,
+    "escalation_score": 0.92,
+    "escalate": true
+  },
+  "guardrails": {
+    "pii_masked": [
+      "phone_number",
+      "card_last4"
+    ],
+    "injection_detected": false,
+    "grounded": true,
+    "note": "answer built from tool data / fixed template"
+  },
+  "nodes_executed": [
+    "input_guard",
+    "classify_intent",
+    "lookup_order",
+    "generate_answer",
+    "output_guard",
+    "finalize"
+  ],
+  "latency_ms": 3.92
+}
+
+POST /add-document  body={"doc_id": "13_gift_card_policy", "text": "Nykaa gift cards are valid for 12 months from the date of purchase. Gift cards cannot be exchanged for cash."}
+  status=200
+  response={
+  "trace_id": "714c0af9-8d1e-493c-9b22-c5e5c5314736",
+  "doc_id": "13_gift_card_policy",
+  "chunks_added": {
+    "nykaa_fixed": 1,
+    "nykaa_sentence": 2
+  },
+  "latency_ms": 12.59
+}
+
+POST /ask  body={"query": "How long is a Nykaa gift card valid?", "session_id": "api-demo"}
+  status=200
+  response={
+  "trace_id": "09f43059-b2f5-429a-9e76-00a5dd747a59",
+  "session_id": "api-demo",
+  "query": "How long is a Nykaa gift card valid?",
+  "route": "rag",
+  "answer": "According to Nykaa policy: Nykaa gift cards are valid for 12 months from the date of purchase.",
+  "sources": [
+    "02_cod_refund_timeline",
+    "04_reverse_pickup_eligibility",
+    "13_gift_card_policy"
+  ],
+  "order": null,
+  "guardrails": {
+    "pii_masked": [],
+    "injection_detected": false,
+    "grounded": true,
+    "note": "all sentences supported by retrieved context"
+  },
+  "nodes_executed": [
+    "input_guard",
+    "classify_intent",
+    "retrieve_policy",
+    "generate_answer",
+    "output_guard",
+    "finalize"
+  ],
+  "latency_ms": 8.0
+}
+
+POST /ask with empty query -> status 422 (Pydantic validation)
+
+(demo document 13_gift_card_policy removed again so the graded KB stays at 12 documents)
+
+=== logs/requests.jsonl (one JSON line per request) ===
+{"trace_id": "ee7ca535-2e9d-4758-b686-d605306940eb", "timestamp": "2026-10-16T06:41:59.000902+00:00", "endpoint": "/ask", "request_text": "Can I exchange my shoes for a bigger size?", "pii_masked": [], "latency_ms": 10.54, "session_id": "api-demo", "status": 200, "route": "rag", "grounded": true}
+{"trace_id": "bd2ae88b-64ce-4ac7-a7ce-4a52a2b0974b", "timestamp": "2026-10-16T06:41:59.005485+00:00", "endpoint": "/ask", "request_text": "My number is [PHONE_MASKED], card ending [CARD_LAST4_MASKED]. Status of NYK-1029?", "pii_masked": ["phone_number", "card_last4"], "latency_ms": 3.93, "session_id": "api-demo", "status": 200, "route": "order_lookup", "grounded": true}
+{"trace_id": "714c0af9-8d1e-493c-9b22-c5e5c5314736", "timestamp": "2026-10-16T06:41:59.018631+00:00", "endpoint": "/add-document", "request_text": "Nykaa gift cards are valid for 12 months from the date of purchase. Gift cards cannot be exchanged for cash.", "pii_masked": [], "latency_ms": 12.5, "status": 200, "doc_id": "13_gift_card_policy", "chunks_added": {"nykaa_fixed": 1, "nykaa_sentence": 2}}
+{"trace_id": "09f43059-b2f5-429a-9e76-00a5dd747a59", "timestamp": "2026-10-16T06:41:59.027382+00:00", "endpoint": "/ask", "request_text": "How long is a Nykaa gift card valid?", "pii_masked": [], "latency_ms": 8.01, "session_id": "api-demo", "status": 200, "route": "rag", "grounded": true}
+
+CHECK PASSED: raw phone number / card digits do NOT appear anywhere in the log file.

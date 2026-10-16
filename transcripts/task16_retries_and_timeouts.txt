@@ -1,0 +1,24 @@
+(a) RETRY POLICY - lookup_order fails 2 times (simulated DB outage), then succeeds
+    policy: max_attempts=4, initial_interval=0.2s, backoff_factor=2.0, max_interval=2.0s, jitter=True
+    [EXECUTING NODE] input_guard
+    [EXECUTING NODE] classify_intent
+    [lookup_order] t= 0.00s attempt 1 FAILED: order DB temporarily unavailable (simulated failure 1/2)
+    [lookup_order] t= 0.40s attempt 2 FAILED: order DB temporarily unavailable (simulated failure 2/2)
+    [lookup_order] t= 1.08s attempt 3 SUCCEEDED
+    [EXECUTING NODE] lookup_order
+    [EXECUTING NODE] generate_answer
+    [EXECUTING NODE] output_guard
+    [EXECUTING NODE] finalize
+    RECOVERED after 3 attempts (within the 4 allowed) in 1.10s
+    answer: Order NYK-1029 (Footwear) is currently Shipped. Order value: INR 3862. Delayed shipment: Yes. Escalation score: 0.92 (threshold 0.7733). This order needs escalation to Level 2 support.
+
+(b) PER-NODE TIMEOUT - retrieve_policy is made to take 5s; its timeout is 2.0s
+    [EXECUTING NODE] input_guard
+    [EXECUTING NODE] classify_intent
+    CLEAN ERROR after 2.00s (no hang): NodeTimeoutError: Node 'retrieve_policy' exceeded its run timeout of 2.000s (elapsed: 2.001s).
+
+(c) GLOBAL TIMEOUT - every node takes 1s (each under its own limit) but the whole run needs ~6s; global budget = 3.0s
+    [EXECUTING NODE] input_guard
+    [EXECUTING NODE] classify_intent
+    WHOLE RUN CANCELLED after 3.00s: GraphTimeoutError: whole graph exceeded the global timeout of 3.0s
+    nodes completed before cancellation: ['input_guard', 'classify_intent']
